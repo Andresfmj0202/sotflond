@@ -1,5 +1,6 @@
 public class Ejercicio10 {
     public static void main(String[]arg){
+        //fibonacci
         int numA = 0;
         int numB = 1;
         int cont ;
