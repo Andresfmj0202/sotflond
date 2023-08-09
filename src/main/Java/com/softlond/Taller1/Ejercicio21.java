@@ -1,3 +1,5 @@
+package main.Java.com.softlond.Taller1;
+
 import javax.swing.JOptionPane;
 public class Ejercicio21 {
         public static void main(String[] args) {

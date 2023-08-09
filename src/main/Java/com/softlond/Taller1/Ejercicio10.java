@@ -1,3 +1,5 @@
+package main.Java.com.softlond.Taller1;
+
 public class Ejercicio10 {
     public static void main(String[]arg){
         //fibonacci

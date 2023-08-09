@@ -1,3 +1,5 @@
+import main.Java.com.sotflond.POO.registroAlumno.Alumno;
+
 import javax.swing.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -5,8 +7,6 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
-       String input = JOptionPane.showInputDialog("escribe algo");
 
-
-        }
     }
+}

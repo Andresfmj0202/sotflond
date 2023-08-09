@@ -1,3 +1,5 @@
+package main.Java.com.softlond.Taller1;
+
 import javax.swing.*;
 import java.util.Random;
 
