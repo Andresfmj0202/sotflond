@@ -1,4 +1,5 @@
 package main.Java.com.sotflond.POO.SistemaHotel;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,14 @@ public class Hotel {
     }
 
     public void mostrarHabitaciones() {
-        System.out.println("Habitaciones del hotel '" + nombre + "':");
-        for (Habitacion habitacion : habitaciones) {
-            System.out.println(habitacion);
-        }
-    }
+        StringBuilder mensaje = new StringBuilder("Habitaciones del hotel '" + nombre + "':\n");
 
+        for (Habitacion habitacion : habitaciones) {
+            mensaje.append(habitacion).append("\n");
+        }
+
+        JOptionPane.showMessageDialog(null, mensaje.toString());
+    }
     public boolean verificarDisponibilidad(int numeroHabitacion) {
         for (Habitacion habitacion : habitaciones) {
             if (habitacion.getNumero() == numeroHabitacion) {
