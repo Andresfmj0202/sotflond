@@ -17,8 +17,24 @@ public class Hotel {
         }
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void setHabitaciones(List<Habitacion> habitaciones) {
+        this.habitaciones = habitaciones;
+    }
+
     public void mostrarHabitaciones() {
-        StringBuilder mensaje = new StringBuilder("Habitaciones del hotel '" + nombre + "':\n");
+        StringBuilder mensaje = new StringBuilder("Habitaciones del hotel '" + getNombre() + "':\n");
 
         for (Habitacion habitacion : habitaciones) {
             mensaje.append(habitacion).append("\n");
@@ -35,19 +51,16 @@ public class Hotel {
         return false;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void actualizarHabitacion(int numeroHabitacion) {
+        for (Habitacion habitacion : habitaciones) {
+            if (habitacion.getNumero() == numeroHabitacion) {
+                habitacion.reservar();
+            }
+        }
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public List<Habitacion> getHabitaciones() {
-        return habitaciones;
-    }
 
-    public void setHabitaciones(List<Habitacion> habitaciones) {
-        this.habitaciones = habitaciones;
-    }
+
+
 }

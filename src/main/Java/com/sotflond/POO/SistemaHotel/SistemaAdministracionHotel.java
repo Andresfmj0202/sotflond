@@ -43,16 +43,19 @@ public class SistemaAdministracionHotel {
                         + "\n" + cliente.getCedula() +
                         "\n"
         );
-
+        //declarar instancias de objetos para luego inicializar
         Reserva reserva = null;
+        int numeroHabitacion;
+
 
         String menu;
         do {
             menu = JOptionPane.showInputDialog(
-                    "Ingresa el proceso que quieras realizar:\n" +
-                            "1. Mostrar habitaciones\n" +
-                            "2. Reservar una habitacion\n" +
-                            "3. Liberar una habitacion\n" +
+                    "Ingrese el proceso que quieras realizar:\n" +
+
+                            "1. Reservar una habitacion\n" +
+                            "2. Liberar una habitacion\n" +
+                            "3. Mostrar habitaciones\n" +
                             "exit: Salir del programa"
             );
 
@@ -60,45 +63,53 @@ public class SistemaAdministracionHotel {
                 JOptionPane.showMessageDialog(null, "Opcion no valida. Intente nuevamente.");
             } else {
                 switch (menu) {
-                    case "1":
-                        opcionHotelElegido.mostrarHabitaciones();
-                        break;
 
-                    case "2":
+
+                    case "1":
                         String opcion = JOptionPane.showInputDialog("Ingrese el numero de habitacion que quieres reservar");
-                        int numeroHabitacion = Integer.parseInt(opcion);
+                        numeroHabitacion = Integer.parseInt(opcion);
 
                         reserva = new Reserva(1, opcionHotelElegido, numeroHabitacion, cliente);
 
                         if (opcionHotelElegido.verificarDisponibilidad(numeroHabitacion)) {
                             JOptionPane.showMessageDialog(null,
                                     "La habitación " + numeroHabitacion + " está disponible para reservar.");
+                            // ocupar una habitacion
+                            JOptionPane.showMessageDialog(null, reserva.ocuparHabitacion(reserva));
+                            reserva.modificarEstado(reserva);
                         } else {
                             JOptionPane.showMessageDialog(null,
                                     "La habitación " + numeroHabitacion + " está reservada.");
                         }
-                        // ocupar una habitacion
-                        JOptionPane.showMessageDialog(null, reserva.ocuparHabitacion());
-
                         break;
 
-                    case "3":
+                    case "2":
                         // liberar una habitacion
                         opcion = JOptionPane.showInputDialog("Ingrese el numero de habitacion que quieres liberar");
                         numeroHabitacion = Integer.parseInt(opcion);
 
 
                         JOptionPane.showMessageDialog(null,
-                                reserva.liberarHabitacion(numeroHabitacion));
+                                reserva.liberarHabitacion(numeroHabitacion,reserva));
 
                         //ocupar una habitacion que no esta reservada al liberar
                         String verificar = JOptionPane.showInputDialog("la quieres ocupar Y/N");
                         if (verificar.equals("Y")){
                             JOptionPane.showMessageDialog(null,
-                                    reserva.OcuparHabitacionLiberada(numeroHabitacion));
+                                    reserva.OcuparHabitacionLiberada(numeroHabitacion, reserva));
+                                    reserva.modificarEstado(reserva);
+
+
                         }else {
                             JOptionPane.showMessageDialog(null, "proceso terminado");
                         }
+
+                        break;
+                    case "3":
+
+                        numeroHabitacion = reserva.getNumeroHabitacion();
+                        opcionHotelElegido.actualizarHabitacion(numeroHabitacion);
+                        opcionHotelElegido.mostrarHabitaciones();
 
                         break;
 
